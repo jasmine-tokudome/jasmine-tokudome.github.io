@@ -15,10 +15,12 @@ a {
 /* ヘッダースタイル */
 .header-nav {
     float: right;
+    padding: 5.5vh 60px 0 0;
 }
 
 .header-nav>li {
     display: inline-block;
+    margin-left: 1em;
 }
 
 .header-nav a {
@@ -64,6 +66,11 @@ a {
     width: 2.5em;
 }
 
+.social-link :hover,
+.social-link :active {
+    color: #ed6e2f;
+}
+
 .social-list {
     list-style: none;
     padding: 0;
@@ -73,6 +80,11 @@ a {
 .social-list>li {
     display: inline-block;
     margin: 0 0.5em;
+}
+
+.social-list :hover,
+..social-list :active {
+    opacity: 0.5;
 }
 
 /* バイオグラフィースタイル */
