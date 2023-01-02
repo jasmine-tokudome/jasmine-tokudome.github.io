@@ -405,6 +405,12 @@ h4 {
     color: #fff;
 }
 
+.half-hero {
+    background-position: center center;
+    background-size: cover;
+    height: 40vh;
+}
+
 /* SNSスタイル */
 .social-list {
     list-style: none;
@@ -627,4 +633,102 @@ h4 {
     background-size: cover;
     height: 6em;
     margin-bottom: 1.5em;
+}
+
+--- layout: default --- <div class="post"><div class="half-hero" style="background-image:url({{ page.postHero }})"></div><article class="page"><header class="post-header"><h1> {
+        {
+        page.title
+    }
+}
+
+</h1><div class="post-byline"><img src="{{ page.gravatar }}"><a href="{{ page.authorTwitter }}" class="social-link">Tw</a>by: {
+        {
+        page.author
+    }
+}
+
+<span>- {
+        {
+        page.date | date: '%B %d, %Y'
+    }
+}
+
+</span></div></header><aside class="post-aside"><h4>Recent Posts</h4><ul class="blog-title-list"> {
+    % for post in site.posts limit: 5 %
+}
+
+<li><a href="{{ post.url }}"> {
+        {
+        post.title
+    }
+}
+
+</a><span>Posted: {
+        {
+        post.date | date: '%B %d, %Y'
+    }
+}
+
+</span></li> {
+    % endfor %
+}
+
+</ul></aside><div class="post-content"> {
+        {
+        content
+    }
+}
+
+</div><footer class="post-footer"> {
+        {
+        page.postFooter
+    }
+}
+
+</footer></article></div>リスト 8.8には、初登場のHTML5要素であるarticleタグが追加されています。HTML5から使えるようになったarticleタグは、一般的なdivタグやspanタグと異なり、「（何かの一部ではなく）それ単体で完結したコンテンツ」をラップするためのものです。つまり、articleタグで囲むということは、仮にarticleタグごと切り出されて別の場所（Googleの検索結果のような別サイトなど）に表示されても、引き続きコンテンツとして成立することを示します。 したがって、ブログ記事のタイトルと本文は（本チュートリアルでもやっているように）articleタグの内側に置くのがふさわしいと言えます。逆に、HomeページのバイオグラフィーはあくまでHomeページの一部であり、他のWebサイトなどに表示されることを想定していないので、articleタグの内側に置くには向いていないでしょう。 リスト 8.8では、articleタグの中に「その記事専用の」headerタグ（headタグではありません！）とfooterタグも置いている点にご注目ください。header class="post-header" には「記事のタイトル」「著者情報」を含め、footer class="post-footer" には「タグ」「共有ボタン」のような記事末尾に置くことが多いものを含めています。 このように、articleタグに専用のヘッダーやフッダーも含めておくのはよい方法です。こうしておくことで、WebページのarticleタグがGoogle検索結果やその他のWebサイトで引用されるときに、タイトルと本文とSNSリンクなどが気持ちよく揃ってくれますし、視覚障害者向けの音声読み上げツールでもarticleタグにあるものが適切に読み上げられるようになります。 変更を保存してブラウザ表示を更新すると、記事のコンテンツがブログらしく配置されるはずです（図 8.11）。これで、細かなスタイルを設定する準備が整いました。 images/figures/post-structure 図 8.11: 記事ページの下ごしらえが終わった様子 それでは、記事ページ向けのスタイルをいろいろ足すことにしましょう（リスト 8.9）。 リスト 8.9:記事ページにCSSを追加してレイアウトを仕上げる css/main.css
+
+/* ブログスタイル */
+. . . .post {
+    width: 100%;
+}
+
+.post-content,
+.post-footer {
+    margin: auto;
+    max-width: 40em;
+    width: 85vw;
+}
+
+.pull-left {
+    float: left;
+    margin: 2em 2em 2em -2%;
+}
+
+.pull-right {
+    float: right;
+    margin: 2em -2% 2em 2em;
+}
+
+.post-aside {
+    background-color: rgba(0, 0, 0, 0.01);
+    float: right;
+    margin: 0 0 2em 2em;
+    padding: 2em;
+}
+
+.post .post-header {
+    margin-bottom: 2.5em;
+    text-align: center;
+}
+
+.post-content {
+    font-size: 1.1rem;
+}
+
+.post-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    font-style: italic;
+    font-size: 0.8em;
+    margin-top: 3em;
+    padding-top: 2em;
 }
