@@ -12,6 +12,33 @@ a {
     color: #f00;
 }
 
+/* ヘッダースタイル */
+.header-nav {
+    float: right;
+}
+
+.header-nav>li {
+    display: inline-block;
+}
+
+.header-nav a {
+    color: #000;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.header-nav a:hover,
+.header-nav a:active {
+    color: #ed6e2f;
+}
+
+.header-logo:hover,
+.header-logo:active {
+    opacity: 0.5;
+}
+
 /* ヒーロースタイル */
 .full-hero {
     background-color: #c7dbfc;
